@@ -5,14 +5,16 @@ const isValidHex = (value) => {
 
     if (value.length != 6) return false;
 
-    for (let i = 0; i < value.length; i++) {
-        if (value[0] != '#' || (i > 0 && !validHexChars.includes(value[i]))) return false;
+    const lowercaseVal = value.toLowerCase();
+
+    for (let i = 0; i < lowercaseVal.length; i++) {
+        if (lowercaseVal[0] != '#' || (i > 0 && !validHexChars.includes(lowercaseVal[i]))) return false;
     }
 
     return true;
 }
 
-console.log(isValidHex('#abcde')) // true - valid hex
+console.log(isValidHex('#Abcde')) // true - valid hex
 console.log(isValidHex('#abcdef')) // false - to long
 console.log(isValidHex('#abc')) // false - to short
 console.log(isValidHex('#abcdo')) // false - invalid char
